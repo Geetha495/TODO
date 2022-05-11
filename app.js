@@ -1,44 +1,79 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 
 const app = express();
 
-const MongoClient = require('mongodb').MongoClient;
+const url = process.env.MONGODB_URL;
 const ObjectID = require('mongodb').ObjectID;
-
-const url = 'mongodb://localhost:27017/tododb';
 
 
 const port = 3000;
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'static')));
+
 
 app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'ejs');
 
 
 
-MongoClient.connect(url, (err, database) => {
-	if (err) {
+
+
+
+
+const { MongoClient } = require('mongodb');
+MongoClient.connect(url,(err,db)=>
+{
+	if(err)
+	{
 		return console.log(err);
 	}
+	console.log('connected');
+	var db = db.db("tododb");
 
-	console.log('Mongodb connected');
-
-	db = database;
 	Todos = db.collection('todos');
 
-	app.listen(port, () => {
+	app.listen(process.env.PORT || port, () => {
 		console.log('Server running on port ' + port);
 	});
+})
 
 
-}
-);
+
+
+
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+// const  ServerApiVersion  = require('mongodb').ServerApiVersion;
+
+// const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+// 	if (err) {
+// 		return console.log(err);
+// 	}
+
+// 	console.log('Mongodb connected');
+
+// 	db = client.db('tododb');
+// 	Todos = db.collection('todos');
+
+// 	app.listen(process.env.PORT || port, () => {
+// 		console.log('Server running on port ' + port);
+// 	});
+
+
+// }
+// );
 
 app.get('/', (req, res, next) => {
 	Todos.find({}).toArray((err, todos) => {
