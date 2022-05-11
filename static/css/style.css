@@ -1,0 +1,95 @@
+::selection
+{
+  color: white;
+  background:rgb(76, 10, 217);
+}
+
+.main-header {
+
+	padding: 10px;
+	text-align: center;
+	font-size: 1.4em;
+	font-family: sans-serif;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	font-style: italic;
+	background-color: rgb(76, 10, 217);
+	color: white;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid gray;
+	outline: none;
+}
+
+.btn-primary {
+	padding: 6px 18px;
+	background-color: hsl(259, 91%, 50%);
+}
+
+.btn-primary:hover {
+	background-color: hsl(259, 91%, 45%);
+}
+
+.btn-outline-primary {
+	border-color: rgb(76, 10, 217);
+	color: rgb(76, 10, 217);
+}
+
+.btn-outline-primary:hover {
+	background-color: rgb(76, 10, 217);
+	color: white;
+}
+
+
+.addedtasks {
+	width: 500px;
+	margin: auto;
+	margin-top: 20px;
+	
+}
+
+
+ul li, .accordion-button
+{
+	list-style: none;
+	border: 1px solid rgb(76, 10, 217);
+	/* margin-bottom: 20px ; */
+	display: flex;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+
+
+.options
+{
+	margin-top: 10px;
+
+	margin-left: auto;
+	display: flex;
+	justify-content: space-around;
+}
+
+.options > *
+{
+	height: 12px;
+	margin-right: 15px;
+}
+
+.bi-pencil-square, .fa-trash
+{
+	color:  rgb(76, 10, 217);
+	font-size: large;
+}
+
+.fa-trash
+{
+	margin-top: 4px;
+}
+
+
+
+
+
