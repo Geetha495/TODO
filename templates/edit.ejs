@@ -9,13 +9,13 @@
 				<label class="form-label">Todo Name</label>
 
 				<input type="text" name="name" placeholder="Edit TODO name" class="form-control"
-					value=<%=todo.name %> >
+					value="<%=todo.name %>" >
 
 			</div>
 			<div class="mb-3">
 				<label class="form-label">Todo Body</label>
 
-				<textarea name="description" placeholder="Edit description" class="form-control"><%= todo.body %> </textarea>
+				<textarea name="description" placeholder="Edit description" class="form-control"> <%= todo.body %> </textarea>
 			</div>
 
 			<button type="submit" class="btn btn-primary">Save Changes</button>

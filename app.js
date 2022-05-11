@@ -46,35 +46,6 @@ MongoClient.connect(url,(err,db)=>
 
 
 
-
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
-// const  ServerApiVersion  = require('mongodb').ServerApiVersion;
-
-// const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-// 	if (err) {
-// 		return console.log(err);
-// 	}
-
-// 	console.log('Mongodb connected');
-
-// 	db = client.db('tododb');
-// 	Todos = db.collection('todos');
-
-// 	app.listen(process.env.PORT || port, () => {
-// 		console.log('Server running on port ' + port);
-// 	});
-
-
-// }
-// );
-
 app.get('/', (req, res, next) => {
 	Todos.find({}).toArray((err, todos) => {
 		if (err) {
