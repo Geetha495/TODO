@@ -33,6 +33,7 @@ input {
 }
 
 .btn-outline-primary {
+	width: 100px;
 	border-color: rgb(76, 10, 217);
 	color: rgb(76, 10, 217);
 }
@@ -45,6 +46,7 @@ input {
 
 .addedtasks {
 	width: 500px;
+	max-width: 90vw;
 	margin: auto;
 	margin-top: 20px;
 	
@@ -93,3 +95,7 @@ ul li, .accordion-button
 
 
 
+.inputsearch{
+	margin-top: 10px;
+	height: 40px;
+}
