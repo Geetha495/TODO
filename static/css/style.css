@@ -99,3 +99,8 @@ ul li, .accordion-button
 	margin-top: 10px;
 	height: 40px;
 }
+
+.accordion-body
+{
+	min-height: 50px;
+}
