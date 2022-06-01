@@ -58,7 +58,8 @@ app.get('/todo/search/',(req,res,next)=>{
 		res.redirect('/');
 		return;
 	}
-	const query = { name: req.query.name };
+
+	const query = { name: new RegExp(req.query.name, "i")  };
 
 	Todos.find(query).toArray((err,todos)=>
 	{
