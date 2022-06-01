@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="mt-5 d-flex justify-content-between row">
+
+		<button class="btn btn-outline-primary col-3 m-3 " data-bs-toggle="modal"
+			data-bs-target="#exampleModal">Add
+			Task</button>
+
+		<form  class="d-flex col-12 col-md-6" action="/todo/search/" method="GET">
+			<div class="autocomplete">
+				<input id='myInput' type="search" class="form-control"
+					placeholder="Search in added tasks" aria-label="Search"  name="name">
+			</div>
+			<button class="ml-4 btn btn-outline-primary" type="submit">Search</button>
+		</form>
+
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<form action="/todo/add" method="POST">
+					<div class="modal-body">
+
+						<input placeholder="I want to do ..." value="" name="name">
+						<br><br>
+						<textarea placeholder="Some description" name="description"></textarea>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+							Add
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>

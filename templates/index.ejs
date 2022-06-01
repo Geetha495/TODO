@@ -1,126 +1,48 @@
 <%- include('layout/header'); -%>
-	<div class="container">
+<%- include('layout/subheader'); -%>
 
-			<div class="mt-5 d-flex justify-content-between row">
 
-				<button class="btn btn-outline-primary col-3 m-3 " data-bs-toggle="modal"
-					data-bs-target="#exampleModal">Add Task</button>
-				<form class="d-flex col-12 col-md-6 inputsearch">
-					<input class="form-control" type="search"
-						placeholder="Search in added tasks" aria-label="Search">
-					<button class="btn btn-outline-primary" type="submit">Search</button>
-				</form>
+<div class="addedtasks">
+	<% todos.forEach(function(todo){ %>
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="h<%= todo._id  %>">
+				<button class="accordion-button" type="button" data-bs-toggle="collapse"
+					data-bs-target="#c<%= todo._id %>" aria-expanded="true"
+					aria-controls="c<%= todo._id %>">
+					<%= todo.name %>
+			</h2>
+			<div id="c<%= todo._id  %>" class="accordion-collapse collapse"
+				aria-labelledby="h<%= todo._id  %>" data-bs-parent="#accordionExample">
 
-			</div>
-	
-
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
+				<div class="d-flex">
+					<div class="accordion-body">
+						<%= todo.body %>
 					</div>
+					<div class="options">
+						<a href="/todo/edit/<%=todo._id  %>" class="edittodo">
+							<i class="bi bi-pencil-square"></i>
+						</a>
 
-					<form action="/todo/add" method="POST">
-						<div class="modal-body">
+						<a href="/todo/delete/<%=todo._id  %>"
+							class="deletetodo" data-id="<%= todo._id  %> ">
+							<i class="fa-solid fa-trash"></i>
+						</a>
 
-							<input placeholder="I want to do ..." value="" name="name">
-							<br><br>
-							<textarea placeholder="Some description"
-								name="description"></textarea>
-
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary"
-								data-bs-dismiss="modal"> Add </button>
-						</div>
-
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
 
+		<br>
+		<% }) %>
 
-		<div class="addedtasks">
+
+</div>
 
 
-
-			<% todos.forEach(function(todo){ %>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="h<%= todo._id  %>">
-						<button class="accordion-button" type="button" data-bs-toggle="collapse"
-							data-bs-target="#c<%= todo._id %>" aria-expanded="true"
-							aria-controls="c<%= todo._id %>">
-							<%= todo.name %>
-					</h2>
-					<div id="c<%= todo._id  %>" class="accordion-collapse collapse"
-						aria-labelledby="h<%= todo._id  %>" data-bs-parent="#accordionExample">
-
-						<div class="d-flex">
-							<div class="accordion-body">
-								<%= todo.body %>
-							</div>
-							<div class="options">
-								<a href="/todo/edit/<%=todo._id  %>" class="edittodo">
-									<i class="bi bi-pencil-square"></i>
-								</a>
-
-								<a href="/todo/delete/<%=todo._id  %>"
-									class="deletetodo" data-id="<%= todo._id  %> ">
-									<i class="fa-solid fa-trash"></i>
-								</a>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-				<% }) %>
+</div>
 
 
 
 
-
-					<!-- <ul>
-
-				<% todos.forEach(function(todo){ %>
-
-
-
-
-					<li>
-						<div class="todo">
-							<h6>
-								<%= todo.name %>
-							</h6>
-							<br>
-							<p>
-								<%= todo.body %>
-							</p>
-						</div>
-						<div class="options">
-							<a href="/todo/edit/<%=todo._id  %>" class="edittodo"
-								data-id="<%= todo._id  %> ">
-								<i class="bi bi-pencil-square"></i>
-							</a>
-							<button type="button" class="btn-close deletetodo"
-								data-id="<%= todo._id  %> "></button>
-						</div>
-					</li>
-					<% }) %>
-			</ul> -->
-		</div>
-
-
-	</div>
-
-
-	<%- include('layout/footer'); -%>
+<%- include('layout/footer'); -%>

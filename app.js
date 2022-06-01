@@ -21,11 +21,6 @@ app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'ejs');
 
 
-
-
-
-
-
 const { MongoClient } = require('mongodb');
 MongoClient.connect(url,(err,db)=>
 {
@@ -44,22 +39,38 @@ MongoClient.connect(url,(err,db)=>
 })
 
 
-
-
 app.get('/', (req, res, next) => {
 	Todos.find({}).toArray((err, todos) => {
 		if (err) {
 			return console.log(err);
 		}
-		// console.log(todos);
+
 		res.render('index', { todos: todos });
 	});
 
 });
 
 
+app.get('/todo/search/',(req,res,next)=>{
+
+	if(!req.query.name)
+	{
+		res.redirect('/');
+		return;
+	}
+	const query = { name: req.query.name };
+
+	Todos.find(query).toArray((err,todos)=>
+	{
+		if (err) {
+			return console.log(err);
+		}
+
+		res.render('index', { todos: todos });
+	});
+});
+
 app.post('/todo/add', (req, res, next) => {
-	// console.log(req.body.name,req.body.description);
 
 	const todo = {
 		name: req.body.name,
